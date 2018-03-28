@@ -25,14 +25,14 @@ make down
 
 Эти команды выполнят
 
-- поднять vagrant-машину
-- установить в нее git и make
-- выгрузить репозитории
-- установить erlang, rebar3
-- собрать приложение и релиз
-- собрать docker образ
-- запушить образ в https://hub.docker.com/r/freddygood/guacamole4/
-- удалить vagrant-машину
+- поднимут vagrant-машину
+- установят в нее git и make
+- выгрузят репозитории
+- установят erlang, rebar3
+- соберут приложение и релиз
+- соберут docker образ
+- запушат образ в https://hub.docker.com/r/freddygood/guacamole4/
+- удалят vagrant-машину
 
 ### Запуск приложения
 
