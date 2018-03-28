@@ -21,8 +21,5 @@ make compile
 rebar3 release
 popd
 
-pushd guacamole4/build
-docker build -t freddygood/guacamole4 .
-docker login
-docker push freddygood/guacamole4
-popd
+docker build -t freddygood/guacamole4:latest -f guacamole4/build/Dockerfile .
+docker push freddygood/guacamole4:latest
