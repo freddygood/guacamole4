@@ -11,5 +11,4 @@ prepare:
 run: sign prepare
 	salt salt-minion state.sls run
 
-all: box sign prepare run
-
+all: sign prepare run

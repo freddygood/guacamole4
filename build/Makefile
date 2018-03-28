@@ -37,7 +37,7 @@ prepare: erlang git docker rebar3
 
 build: build_app build_image
 
-all: box prepare build
+all: prepare build
 
 push: all push_image
 
