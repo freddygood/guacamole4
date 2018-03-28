@@ -1,5 +1,5 @@
 box:
-	vargant up
+	vagrant up
 
 erlang:
 	wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb -O /tmp/erlang-solutions_1.0_all.deb
