@@ -16,12 +16,12 @@ popd
 
 git clone https://github.com/Antibiotic/websocket_chat.git
 pushd websocket_chat
-grep -q relx rebar.config || cat ../guacamole4/rebar-relx.config >> rebar.config
+grep -q relx rebar.config || cat ../guacamole4/build/rebar-relx.config >> rebar.config
 make compile
 rebar3 release
 popd
 
-pushd guacamole4
+pushd guacamole4/build
 docker build -t freddygood/guacamole4 .
 docker login
 docker push freddygood/guacamole4
