@@ -19,7 +19,7 @@ USER ${USER}
 
 WORKDIR ${APP_HOME}
 
-ADD ../websocket_chat/_build/default/rel/app ./
+ADD websocket_chat/_build/default/rel/app ./
 
 EXPOSE ${APP_PORT}
 
