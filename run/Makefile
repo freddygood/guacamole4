@@ -15,4 +15,4 @@ prepare:
 run:
 	salt salt-minion state.sls run
 
-all: salt prepare run
+all: pre-salt prepare run
