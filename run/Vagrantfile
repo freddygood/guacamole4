@@ -1,0 +1,38 @@
+$master_script = <<-SCRIPT
+echo I am provisioning...
+
+apt-get update
+apt-get install -y git
+git clone https://github.com/freddygood/guacamole4.git /tmp/guacamole4
+
+echo '172.28.128.4 app salt-minion' >> /etc/hosts
+SCRIPT
+
+$minion_script = <<-SCRIPT
+echo '172.28.128.3 salt salt-master' >> /etc/hosts
+SCRIPT
+
+Vagrant.configure("2") do |config|
+  config.vm.define "salt-master" do |salt_master|
+    salt_master.vm.box = "ubuntu/xenial64"
+    salt_master.vm.hostname = "salt-master"
+    salt_master.vm.network "private_network", ip: "172.28.128.3"
+    salt_master.vm.provision "shell", inline: $master_script
+
+    salt_master.vm.provision :salt do |salt|
+      salt.install_master = true
+    end
+  end
+
+  config.vm.define "salt-minion" do |salt_minion|
+    salt_minion.vm.box = "ubuntu/xenial64"
+    salt_minion.vm.hostname = "salt-minion"
+    salt_minion.vm.network "private_network", ip: "172.28.128.4"
+    salt_minion.vm.network "forwarded_port", guest: 8080, host: 8080
+    salt_minion.vm.provision "shell", inline: $minion_script
+
+    salt_minion.vm.provision :salt do |salt|
+      salt.run_highstate = false
+    end
+  end
+end
